@@ -23,6 +23,14 @@
   </head>
 
   <body>
+    <%= Current.user&.email_address %>
+    <% if authenticated? %>
+      <%= link_to "Home", root_path %>
+      <%= button_to "Sign out", session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_session_path %>
+      <%= link_to "Sign up", new_registration_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
