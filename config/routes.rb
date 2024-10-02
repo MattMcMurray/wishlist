@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :lists do
+    resources :wishlist_items
+  end
+  # resources :wishlist_items
   resource :session, only: [ :new, :create, :destroy ]
   resource :registration, only: [ :new, :create ]
   resources :passwords, param: :token
@@ -16,5 +20,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "homepage#index"
+  root "lists#index"
 end

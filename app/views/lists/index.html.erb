@@ -1,0 +1,18 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Lists" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Lists</h1>
+    <%= turbo_frame_tag id="new_list", src:new_list_path %>
+  </div>
+
+  <div id="lists" class="min-w-full">
+    <% @lists.each do |list| %>
+      <%= render list %>
+    <% end %>
+  </div>
+</div>

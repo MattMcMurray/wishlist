@@ -1,0 +1,21 @@
+<div id="<%= dom_id list %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= list.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= list.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Number of items:</strong>
+    <%= list.wishlist_items.count %>
+  </p>
+
+  <div class="inline-block ml-2">
+    <%= link_to "View this list", list_wishlist_items_path(list) %>
+    <%= button_to "Destroy this list", list, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  </div>
+</div>
