@@ -3,15 +3,19 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-    @lists = List.where(user_id: Current.user.id)
+    @lists = policy_scope(List)
   end
 
   # GET /lists/1 or /lists/1.json
   def show
+    authorize @list
+  rescue Pundit::NotAuthorizedError
   end
 
   # GET /lists/new
   def new
+    authorize List
+
     @list = List.new
   end
 
