@@ -4,15 +4,16 @@
   <% end %>
 
   <% content_for :title, "Lists" %>
+  <h1 class="font-bold text-4xl">Lists</h1>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Lists</h1>
     <%= turbo_frame_tag id="new_list", src:new_list_path %>
   </div>
 
-  <div id="lists" class="min-w-full">
+  <div id="lists" class="min-w-full flex flex-col gap-2">
     <% @lists.each do |list| %>
       <%= render list %>
     <% end %>
   </div>
+
 </div>
