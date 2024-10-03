@@ -4,7 +4,7 @@ class WishlistItemsController < ApplicationController
 
   # GET /wishlist_items or /wishlist_items.json
   def index
-    @wishlist_items = @list.wishlist_items
+    @wishlist_items = @list.wishlist_items.order(created_at: :desc)
   end
 
   # GET /wishlist_items/1 or /wishlist_items/1.json
@@ -28,6 +28,7 @@ class WishlistItemsController < ApplicationController
       if @wishlist_item.save
         format.html { redirect_to list_wishlist_items_path, notice: "Wishlist item was successfully created." }
         format.json { render :show, status: :created, location: @wishlist_item }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @wishlist_item.errors, status: :unprocessable_entity }

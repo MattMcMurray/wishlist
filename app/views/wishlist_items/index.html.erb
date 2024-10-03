@@ -9,13 +9,15 @@
     <h1 class="font-bold text-4xl mb-4">Wishlist</h1>
   </div>
 
-  <div id="wishlist_items" class="min-w-full">
-    <div class="flex flex-col gap-2">
+  <div class="flex justify-between items-center">
+    <%= turbo_frame_tag id="new_list_wishlist_item", src:new_list_wishlist_item_path(list: @list.id) %>
+  </div>
+
+  <div class="min-w-full">
+    <div id="wishlist_items" class="flex flex-col gap-2">
       <% @wishlist_items.each do |wishlist_item| %>
         <%= render wishlist_item %>
       <% end %>
     </div>
-
-    <%= link_to "New wishlist item", new_list_wishlist_item_path(list_id: @list.id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 </div>
