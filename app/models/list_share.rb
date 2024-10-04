@@ -1,7 +1,7 @@
 class ListShare < ApplicationRecord
   belongs_to :user
   belongs_to :list
-  belongs_to :shared_with, class_name: "User"
+  belongs_to :shared_with, class_name: "User", optional: true
 
   enum share_type: [ :public_link, :user ]
 

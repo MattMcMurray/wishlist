@@ -11,12 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2024_10_04_005413) do
-  create_table "list_shares", id: false, force: :cascade do |t|
+  create_table "list_shares", id: :string, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "share_type", default: 0
     t.integer "list_id", null: false
     t.integer "shared_with_id"
-    t.string "id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_list_shares_on_id", unique: true

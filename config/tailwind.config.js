@@ -28,6 +28,7 @@ module.exports = {
         "gray-dark": "#273444",
         gray: "#8492a6",
         "gray-light": "#d3dce6",
+        red: "#d72a27",
       },
 
       extend: {
