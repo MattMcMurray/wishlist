@@ -27,7 +27,7 @@ Sentry.init do |config|
     case op
     when /http/
       case transaction_name
-      when /health/
+      when "/up"
         # ignore http trace for healthcheck requests to avoid noise in performance metrics
         0.0
       else
