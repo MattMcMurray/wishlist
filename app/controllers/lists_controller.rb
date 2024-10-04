@@ -25,6 +25,8 @@ class ListsController < ApplicationController
 
   # POST /lists or /lists.json
   def create
+    authorize List
+
     @list = List.new(**list_params, user_id: Current.user.id)
 
     respond_to do |format|
@@ -54,6 +56,8 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1 or /lists/1.json
   def destroy
+    authorize @list
+
     @list.destroy!
 
     respond_to do |format|

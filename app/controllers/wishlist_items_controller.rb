@@ -4,7 +4,7 @@ class WishlistItemsController < ApplicationController
 
   # GET /wishlist_items or /wishlist_items.json
   def index
-    @wishlist_items = @list.wishlist_items.order(created_at: :desc)
+    @wishlist_items = policy_scope(@list.wishlist_items.order(created_at: :desc))
   end
 
   # GET /wishlist_items/1 or /wishlist_items/1.json
@@ -13,6 +13,8 @@ class WishlistItemsController < ApplicationController
 
   # GET /wishlist_items/new
   def new
+    authorize WishlistItem
+
     @wishlist_item = @list.wishlist_items.build
   end
 
@@ -22,6 +24,8 @@ class WishlistItemsController < ApplicationController
 
   # POST /wishlist_items or /wishlist_items.json
   def create
+    authorize WishlistItem
+
     @wishlist_item = @list.wishlist_items.build(wishlist_item_params)
 
     respond_to do |format|
