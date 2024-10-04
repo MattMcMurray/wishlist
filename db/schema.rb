@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_02_191109) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_04_005413) do
+  create_table "list_shares", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "share_type", default: 0
+    t.integer "list_id", null: false
+    t.integer "shared_with_id"
+    t.string "id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_list_shares_on_id", unique: true
+    t.index ["list_id"], name: "index_list_shares_on_list_id"
+    t.index ["shared_with_id"], name: "index_list_shares_on_shared_with_id"
+    t.index ["user_id"], name: "index_list_shares_on_user_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -49,6 +63,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_191109) do
     t.index ["user_id"], name: "index_wishlist_items_on_user_id"
   end
 
+  add_foreign_key "list_shares", "lists"
+  add_foreign_key "list_shares", "users"
+  add_foreign_key "list_shares", "users", column: "shared_with_id"
   add_foreign_key "lists", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "wishlist_items", "lists"

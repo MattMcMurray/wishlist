@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :list_shares
   resources :lists do
     resources :wishlist_items
   end
