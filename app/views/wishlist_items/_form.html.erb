@@ -11,22 +11,21 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :url %>
-    <%= form.text_field :url, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <div class="flex gap-2 items-center">
+    <div class="my-5">
+      <%= form.text_field :url, placeholder: "URL", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="my-5">
+      <%= form.text_field :title, placeholder: "Title", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="my-5">
+      <%= form.text_field :description, placeholder: "Description", class: "block shadow rounded-md border border-gray-401 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue text-white inline-block font-medium cursor-pointer" %>
+    <div class="inline">
+      <%= form.submit "Add item", class: "mt-2 rounded-lg py-3 px-5 bg-green font-medium text-white h-fit cursor-pointer" %>
+    </div>
   </div>
 <% end %>
