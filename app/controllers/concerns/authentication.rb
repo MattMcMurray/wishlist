@@ -41,7 +41,7 @@ module Authentication
     end
 
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || "/dashboard"
+      session.delete(:return_to_after_authenticating) || "/lists"
     end
 
 
