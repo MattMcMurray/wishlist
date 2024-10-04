@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="flex gap-2 items-center">
-    <div class="my-5">
+  <div class="flex gap-2 items-center flex-wrap flex-col w-full md:flex-row md:flex-nowrap py-8">
+    <div class="w-full md:w-fit">
       <%= form.text_field :url, placeholder: "URL", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5">
+    <div class="w-full md:w-fit md:grow">
       <%= form.text_field :title, placeholder: "Title", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5">
+    <div class="w-full md:w-fit md:grow">
       <%= form.text_field :description, placeholder: "Description", class: "block shadow rounded-md border border-gray-401 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="inline">
-      <%= form.submit "Add item", class: "mt-2 rounded-lg py-3 px-5 bg-green font-medium text-white h-fit cursor-pointer" %>
+    <div class="w-full md:w-fit md:grow">
+      <%= form.submit "Add item", class: "mt-2 rounded-lg py-3 px-5 bg-green font-medium text-white h-fit cursor-pointer w-full" %>
     </div>
   </div>
 <% end %>

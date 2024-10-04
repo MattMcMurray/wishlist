@@ -1,4 +1,4 @@
-<div class="flex gap-2 justify-end items-center p-4 bg-gray-dark mb-4">
+<div class="flex gap-2 justify-end items-center p-4 bg-gray-dark mb-4 dark:bg-black">
   <% if authenticated? %>
 
     <div class="grow">
@@ -6,7 +6,7 @@
         <%= link_to "Home", root_path %>
       </div>
     </div>
-    <div>
+    <div class="text-white">
       <%= Current.user&.email_address %>
     </div>
     <div class="bg-gray text-white rounded p-2">

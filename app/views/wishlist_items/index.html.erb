@@ -12,7 +12,7 @@
   </div>
 
   <div class="flex justify-between items-center">
-    <%= turbo_frame_tag id="new_list_wishlist_item", src:new_list_wishlist_item_path(list: @list.id) %>
+    <%= turbo_frame_tag id="new_list_wishlist_item", src:new_list_wishlist_item_path(list: @list.id), class: "w-full" %>
   </div>
 
   <div class="min-w-full">

@@ -1,13 +1,13 @@
 <div id="<%= dom_id wishlist_item %>">
-  <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+  <div class="p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray dark:border-gray-700 flex flex-col gap-2">
+    <h5 class="text-2xl font-bold tracking-tight dark:text-white">
       <%= wishlist_item.title %>
     </h5>
-    <p class="font-normal text-gray-700 dark:text-gray-400">
+    <p class="font-normal">
     <%= wishlist_item.description %>
     </p>
-    <a href="<%= wishlist_item.url %>"  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-      Visit link
+    <a target="_blank" href="<%= wishlist_item.url %>"  class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      View item
     </a>
   </div>
 </div>
