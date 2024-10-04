@@ -4,12 +4,12 @@ class RegistrationsController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   def new
-    authorize :registrations
+    authorize :registration
     redirect_to root_url if authenticated?
   end
 
   def create
-    authorize :registrations
+    authorize :registration
     user = User.new(params.permit(:email_address, :password))
 
     if user.save
@@ -21,7 +21,7 @@ class RegistrationsController < ApplicationController
   end
 
   def destroy
-    authorize :registrations
+    authorize :registration
     terminate_session
     redirect_to new_session_url
   end
