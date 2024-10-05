@@ -7,6 +7,10 @@ class WishlistItemPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    record.user_id == Current.user.id
+  end
+
   class Scope < ApplicationPolicy::Scope
     def resolve
       scope.where(user_id: user.id)

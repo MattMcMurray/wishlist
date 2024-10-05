@@ -1,6 +1,6 @@
 class WishlistItemsController < ApplicationController
-  before_action :set_wishlist_item, only: %i[ show edit update destroy ]
   before_action :get_list
+  before_action :set_wishlist_item, only: %i[ show edit update destroy ]
 
   # GET /wishlist_items or /wishlist_items.json
   def index
@@ -55,10 +55,11 @@ class WishlistItemsController < ApplicationController
 
   # DELETE /wishlist_items/1 or /wishlist_items/1.json
   def destroy
+    authorize @wishlist_item
     @wishlist_item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to list_wishlist_items_path(@list), status: :see_other, notice: "Wishlist item was successfully destroyed." }
+      format.html { redirect_to list_wishlist_items_path(@list), status: :see_other, notice: "Wishlist item was successfully deleted." }
       format.json { head :no_content }
     end
   end

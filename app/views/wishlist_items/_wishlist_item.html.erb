@@ -6,8 +6,12 @@
     <p class="font-normal">
     <%= wishlist_item.description %>
     </p>
-    <a target="_blank" href="<%= wishlist_item.url %>"  class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-      View item
-    </a>
+
+    <div class="flex gap-2">
+      <a target="_blank" href="<%= wishlist_item.url %>"  class="button-default">
+        View item
+      </a>
+      <%= button_to "Delete this item", list_wishlist_item_path(@list, wishlist_item), method: :delete, form: {data: {turbo_confirm: "Delete #{wishlist_item.title}?"}}, class: "button-danger"  %>
+    </div>
   </div>
 </div>
