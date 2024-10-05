@@ -7,11 +7,12 @@
     <%= wishlist_item.description %>
     </p>
 
-    <div class="flex gap-2">
-      <a target="_blank" href="<%= wishlist_item.url %>"  class="button-default">
-        View item
+    <div class="flex gap-2 flex-col md:flex-row">
+      <%= link_to "Edit item" , edit_list_wishlist_item_path(@list, wishlist_item), class: "button-primary button--full-width" %>
+      <a target="_blank" href="<%= wishlist_item.url %>"  class="button-default button--full-width">
+        Visit link
       </a>
-      <%= button_to "Delete this item", list_wishlist_item_path(@list, wishlist_item), method: :delete, form: {data: {turbo_confirm: "Delete #{wishlist_item.title}?"}}, class: "button-danger"  %>
+      <%= button_to "Delete item", list_wishlist_item_path(@list, wishlist_item), method: :delete, form: {data: {turbo_confirm: "Delete item #{wishlist_item.title}?"}}, class: "button-danger button--full-width"  %>
     </div>
   </div>
 </div>
