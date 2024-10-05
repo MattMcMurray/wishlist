@@ -7,6 +7,14 @@ class WishlistItemPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.user_id == Current.user.id
+  end
+
+  def update?
+    record.user_id == Current.user.id
+  end
+
   def destroy?
     record.user_id == Current.user.id
   end

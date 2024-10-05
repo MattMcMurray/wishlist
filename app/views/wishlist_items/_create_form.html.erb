@@ -17,15 +17,7 @@
     </div>
 
     <div class="w-full md:w-fit md:grow">
-      <%= form.text_field :title, placeholder: "Title", class: "text-input" %>
-    </div>
-
-    <div class="w-full md:w-fit md:grow">
-      <%= form.text_field :description, placeholder: "Description", class: "text-input" %>
-    </div>
-
-    <div class="w-full md:w-fit md:grow">
-      <%= form.submit "Update", class: "button-success" %>
+      <%= form.submit "Add item", data: {turbo_submits_with: "Fetching info..."}, class: "button-success" %>
     </div>
   </div>
 <% end %>

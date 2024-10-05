@@ -9,6 +9,7 @@ class WishlistItemsController < ApplicationController
 
   # GET /wishlist_items/1 or /wishlist_items/1.json
   def show
+    authorize @wishlist_item
   end
 
   # GET /wishlist_items/new
@@ -20,13 +21,20 @@ class WishlistItemsController < ApplicationController
 
   # GET /wishlist_items/1/edit
   def edit
+    authorize @wishlist_item
   end
 
   # POST /wishlist_items or /wishlist_items.json
   def create
     authorize WishlistItem
 
-    @wishlist_item = @list.wishlist_items.build(wishlist_item_params)
+    begin
+      preview = LinkThumbnailer.generate(wishlist_item_params[:url])
+      @wishlist_item = @list.wishlist_items.build(url: wishlist_item_params[:url], title: preview.title, description: preview.description)
+    rescue LinkThumbnailer::Exceptions => e
+      Sentry.capture_exception(e)
+      @wishlist_item = @list.wishlist_items.build(url: wishlist_item_params[:url], title: wishlist_item_params[:url])
+    end
 
     respond_to do |format|
       if @wishlist_item.save
@@ -42,6 +50,8 @@ class WishlistItemsController < ApplicationController
 
   # PATCH/PUT /wishlist_items/1 or /wishlist_items/1.json
   def update
+    authorize @wishlist_item
+
     respond_to do |format|
       if @wishlist_item.update(wishlist_item_params)
         format.html { redirect_to list_wishlist_items_path(@list), notice: "Wishlist item was successfully updated." }
