@@ -4,6 +4,7 @@ class SharedController < ApplicationController
 
   def shared
     raise ActionController::RoutingError.new("Not Found") if @list_share.nil? || @list_share.share_type != "public_link"
+    authorize :shared
 
     @list = @list_share.list
     @wishlist_items = @list.wishlist_items

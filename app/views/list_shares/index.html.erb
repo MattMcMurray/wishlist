@@ -18,5 +18,7 @@
         <%= button_to "Delete", list_list_share_path(@list, list_share), method: :delete, form: {data: {turbo_confirm: "Are you sure you want to delete this list share?"}}, class: "button-danger" %>
       </div>
     <% end %>
+
+    <%= link_to "New share", new_list_list_share_path(@list), class: "button-primary mt-8" %>
   </div>
 </div>
