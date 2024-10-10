@@ -4,24 +4,28 @@ class ListSharesController < ApplicationController
 
   # GET /list_shares or /list_shares.json
   def index
-    @list_shares = ListShare.all
+    @list_shares = policy_scope(ListShare)
   end
 
   # GET /list_shares/1 or /list_shares/1.json
   def show
+    authorize @list_share
   end
 
   # GET /list_shares/new
   def new
+    authorize ListShare
     @list_share = ListShare.new
   end
 
   # GET /list_shares/1/edit
   def edit
+    authorize @list_share
   end
 
   # POST /list_shares or /list_shares.json
   def create
+    authorize ListShare
     @list_share = ListShare.new(**list_share_params, list: @list, user: Current.user)
 
     respond_to do |format|
@@ -37,6 +41,7 @@ class ListSharesController < ApplicationController
 
   # PATCH/PUT /list_shares/1 or /list_shares/1.json
   def update
+    authorize @list_share
     respond_to do |format|
       if @list_share.update(list_share_params)
         format.html { redirect_to @list_share, notice: "List share was successfully updated." }
@@ -50,10 +55,11 @@ class ListSharesController < ApplicationController
 
   # DELETE /list_shares/1 or /list_shares/1.json
   def destroy
+    authorize @list_share
     @list_share.destroy!
 
     respond_to do |format|
-      format.html { redirect_to list_shares_path, status: :see_other, notice: "List share was successfully destroyed." }
+      format.html { redirect_to list_list_shares_path(@list), status: :see_other, notice: "List share was successfully destroyed." }
       format.json { head :no_content }
     end
   end
