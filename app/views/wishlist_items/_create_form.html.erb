@@ -16,8 +16,6 @@
       <%= form.text_field :url, placeholder: "URL", class: "text-input" %>
     </div>
 
-    <div class="w-full md:w-fit md:grow">
-      <%= form.submit "Add item", data: {turbo_submits_with: "Fetching info..."}, class: "button-success" %>
-    </div>
+    <%= form.submit "Add item", data: {turbo_submits_with: "Fetching info..."}, class: "button-success w-full md:w-fit" %>
   </div>
 <% end %>

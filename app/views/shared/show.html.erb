@@ -1,0 +1,43 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+
+    <div id="<%= dom_id @list %>">
+      <div>
+        <h1 class="my-5 text-4xl block md:inline-block">
+          <%= @list.title %>
+        </h1>
+        <span class="ml-0 md:ml-2"> by <%= @list.user.email_address %></span>
+      </div>
+      <p class="mb-5 italic text-gray">
+      <%= @list.description %>
+      </p>
+    </div>
+
+    <div id="list_items">
+      <ul class="flex flex-col gap-4">
+        <% @list.wishlist_items.each do |item| %>
+          <li>
+            <div class="p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray dark:border-gray-700 flex flex-col gap-2">
+              <h5 class="text-2xl font-bold tracking-tight dark:text-white">
+                <%= item.title %>
+              </h5>
+              <p class="font-normal">
+              <%= item.description %>
+              </p>
+
+              <div class="flex gap-2 flex-col md:flex-row">
+                <a target="_blank" href="<%= item.url %>"  class="button-default button--full-width">
+                  Visit link
+                </a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

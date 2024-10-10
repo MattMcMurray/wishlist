@@ -9,7 +9,9 @@ class ListsController < ApplicationController
   # GET /lists/1 or /lists/1.json
   def show
     authorize @list
-  rescue Pundit::NotAuthorizedError
+    respond_to do |format|
+      format.html { redirect_to list_wishlist_items_path(@list) }
+    end
   end
 
   # GET /lists/new

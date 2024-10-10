@@ -1,4 +1,5 @@
 class ListSharesController < ApplicationController
+  before_action :get_list
   before_action :set_list_share, only: %i[ show edit update destroy ]
 
   # GET /list_shares or /list_shares.json
@@ -21,11 +22,11 @@ class ListSharesController < ApplicationController
 
   # POST /list_shares or /list_shares.json
   def create
-    @list_share = ListShare.new(list_share_params)
+    @list_share = ListShare.new(**list_share_params, list: @list, user: Current.user)
 
     respond_to do |format|
       if @list_share.save
-        format.html { redirect_to @list_share, notice: "List share was successfully created." }
+        format.html { redirect_to @list, notice: "List share was successfully created." }
         format.json { render :show, status: :created, location: @list_share }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +66,10 @@ class ListSharesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_share_params
-      params.expect(list_share: [ :user_id, :type, :list_id ])
+      params.expect(list_share: [ :share_type ])
+    end
+
+    def get_list
+      @list = List.find(params[:list_id])
     end
 end

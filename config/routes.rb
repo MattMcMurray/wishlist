@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :list_shares
   resources :lists do
     resources :wishlist_items
+    resources :list_shares
   end
+
   # resources :wishlist_items
   resource :session, only: [ :new, :create, :destroy ]
   resource :registration, only: [ :new, :create ]
   resources :passwords, param: :token
 
   get "/dashboard", to: "dashboard#index"
+  get "/shared/:share_token", to: "shared#shared"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

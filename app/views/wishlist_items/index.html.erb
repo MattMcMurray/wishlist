@@ -24,6 +24,7 @@
   </div>
 
   <div class="py-8">
+    <%= link_to "Share this list", new_list_list_share_path, class: "button-primary" %>
     <%= button_to "Destroy this wishlist", @list, method: :delete, form: {data: {turbo_confirm: 'Delete this wishlist permanently? This cannot be undone.'}}, class: "button-danger button--full-width"  %>
   </div>
 </div>
