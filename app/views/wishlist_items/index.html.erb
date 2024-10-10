@@ -24,7 +24,7 @@
   </div>
 
   <div class="py-8 flex flex-col md:flex-row gap-2">
-    <%= link_to "Share this list", list_list_shares_path, class: "button-primary" %>
-    <%= button_to "Destroy this wishlist", @list, method: :delete, form: {data: {turbo_confirm: 'Delete this wishlist permanently? This cannot be undone.'}}, class: "button-danger button--full-width"  %>
+    <%= link_to "Share list", list_list_shares_path, class: "button-primary" %>
+    <%= button_to "Delete list", @list, method: :delete, form: {data: {turbo_confirm: 'Delete this wishlist permanently? This cannot be undone.'}}, class: "button-danger button--full-width"  %>
   </div>
 </div>

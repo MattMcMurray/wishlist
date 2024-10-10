@@ -30,7 +30,7 @@ class ListSharesController < ApplicationController
 
     respond_to do |format|
       if @list_share.save
-        format.html { redirect_to @list, notice: "List share was successfully created." }
+        format.html { redirect_to list_list_share_path(@list, @list_share), notice: "List share was successfully created." }
         format.json { render :show, status: :created, location: @list_share }
       else
         format.html { render :new, status: :unprocessable_entity }

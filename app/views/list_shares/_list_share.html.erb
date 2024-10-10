@@ -1,11 +1,15 @@
 <div id="<%= dom_id list_share %>">
-  <p class="mt-5 flex gap-2">
+  <div class="mt-5 flex gap-2">
     <strong class="block mb-1 font-bold">Type:</strong>
+    <p>
     <%= list_share.share_type.humanize %>
-  </p>
+    </p>
+  </div>
 
-  <p class="mt-5 flex gap-2">
-    <strong class="block mb-1 font-bold">Share url:</strong>
-    <%= request.base_url + "/shared/" + list_share.id  %>
-  </p>
+  <div class="mt-2 flex gap-2">
+    <strong class="block mb-1 font-bold">URL:</strong>
+    <a href="<%= "/shared/" + list_share.id %>" target="_blank">
+      <%= request.base_url + "/shared/" + list_share.id  %>
+    </a>
+  </div>
 </div>
