@@ -30,4 +30,8 @@
   .button--full-width {
     @apply w-full md:w-fit;
   }
+
+  .flash-message__alert {
+    @apply px-4 py-2 rounded-lg border;
+  }
 }

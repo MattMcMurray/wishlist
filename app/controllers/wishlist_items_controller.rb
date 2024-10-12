@@ -31,9 +31,11 @@ class WishlistItemsController < ApplicationController
     begin
       preview = LinkThumbnailer.generate(wishlist_item_params[:url])
       @wishlist_item = @list.wishlist_items.build(url: wishlist_item_params[:url], title: preview.title, description: preview.description)
+      raise LinkThumbnailer::Exceptions
     rescue LinkThumbnailer::Exceptions => e
       Sentry.capture_exception(e)
       @wishlist_item = @list.wishlist_items.build(url: wishlist_item_params[:url], title: wishlist_item_params[:url])
+      flash[:alert] = "Couldn't fetch details from the URL. Please fill in the details manually."
     end
 
     respond_to do |format|
