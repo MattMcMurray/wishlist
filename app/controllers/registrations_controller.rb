@@ -10,7 +10,13 @@ class RegistrationsController < ApplicationController
 
   def create
     authorize :registration
-    user = User.new(params.permit(:email_address, :password))
+    permitted = params.permit(:email_address, :password, :confirm_password)
+
+    if permitted["password"] != permitted["confirm_password"]
+      return redirect_to new_registration_url, alert: "Password confirmation does not match"
+    end
+
+    user = User.new(email_address: permitted["email_address"], password: permitted["password"])
 
     if user.save
       start_new_session_for user
