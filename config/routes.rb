@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resource :registration, only: [ :new, :create ]
   resources :passwords, param: :token
 
-  get "/dashboard", to: "dashboard#index"
   get "/shared/:share_token", to: "shared#shared"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -23,5 +22,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "lists#index"
+  root "homepage#index"
 end
