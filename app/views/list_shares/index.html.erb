@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="flex flex-col md:flex-row md:gap-2 mt-8">
-      <%= link_to "New share", new_list_list_share_path(@list), class: "button-primary" %>
+      <%= button_to "New shareable link", list_list_shares_path(@list), method: :post, class: "button-success button--full-width" %>
       <%= link_to "Back to list", @list, class: "button-default" %>
     </div>
   </div>

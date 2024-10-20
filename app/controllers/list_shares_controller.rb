@@ -26,7 +26,7 @@ class ListSharesController < ApplicationController
   # POST /list_shares or /list_shares.json
   def create
     authorize ListShare
-    @list_share = ListShare.new(**list_share_params, list: @list, user: Current.user)
+    @list_share = ListShare.new(list: @list, user: Current.user, share_type: "public_link")
 
     respond_to do |format|
       if @list_share.save

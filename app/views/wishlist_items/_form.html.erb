@@ -11,20 +11,21 @@
     </div>
   <% end %>
 
-  <div class="flex gap-2 items-center flex-wrap flex-col w-full md:flex-row md:flex-nowrap py-8">
-    <div class="w-full md:w-fit">
+  <div class="flex gap-2 items-center flex-wrap flex-col w-full py-8">
+    <div class="w-full">
       <%= form.text_field :url, placeholder: "URL", class: "text-input" %>
     </div>
 
-    <div class="w-full md:w-fit md:grow">
+    <div class="w-full">
       <%= form.text_field :title, placeholder: "Title", class: "text-input" %>
     </div>
 
-    <div class="w-full md:w-fit md:grow">
-      <%= form.text_field :description, placeholder: "Description", class: "text-input" %>
+    <div class="w-full">
+      <%= form.text_area :description, placeholder: "Description", class: "text-input", rows: 7 %>
     </div>
 
-    <div class="w-full md:w-fit md:grow">
+    <div class="w-full flex gap-2">
+      <%= link_to "Back to list", list_wishlist_items_path(@list), class: "button-default"  %>
       <%= form.submit "Update", class: "button-success" %>
     </div>
   </div>
