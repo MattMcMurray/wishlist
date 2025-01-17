@@ -23,6 +23,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
+    authorize @list
   end
 
   # POST /lists or /lists.json

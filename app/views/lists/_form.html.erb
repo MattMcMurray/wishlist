@@ -13,16 +13,16 @@
       </div>
     <% end %>
 
-    <div class="my-5">
-      <%= form.text_field :title, placeholder: 'Title', class: "text-input" %>
-    </div>
+    <div class="my-5 flex flex-col gap-y-2 lg:grid lg:grid-cols-5 lg:gap-y-4 lg:items-center">
+      <%= form.label :title, "Title:", class: "font-medium col-span-1" %>
+      <%= form.text_field :title, placeholder: 'Title', class: "text-input col-span-4" %>
 
-    <div class="my-5">
-      <%= form.text_field :description, placeholder: 'Description', class: "text-input" %>
+      <%= form.label :description, "Description:", class: "font-medium col-span-1 mt-2 lg:mt-0" %>
+      <%= form.text_field :description, placeholder: 'Description', class: "text-input col-span-4" %>
     </div>
 
     <div class="inline">
-      <%= form.submit class: "mt-2 rounded-lg py-3 px-5 bg-green font-medium text-white h-fit cursor-pointer" %>
+      <%= form.submit class: "button-success" %>
     </div>
   </div>
 <% end %>

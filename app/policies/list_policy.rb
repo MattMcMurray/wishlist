@@ -11,6 +11,10 @@ class ListPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    record.user_id == Current.user.id
+  end
+
   def create?
     true
   end

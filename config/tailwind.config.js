@@ -28,6 +28,10 @@ module.exports = {
         "gray-dark": "#273444",
         gray: "#8492a6",
         "gray-light": "#d3dce6",
+        slate: {
+          50: "#f8fafc",
+          500: "#64748b",
+        },
         red: "#d72a27",
       },
 
