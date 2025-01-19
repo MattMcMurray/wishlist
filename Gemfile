@@ -74,3 +74,5 @@ gem "tailwindcss-rails", "~> 2.7"
 gem "pundit", "~> 2.4"
 
 gem "dockerfile-rails", ">= 1.6", group: :development
+
+gem "launchdarkly-server-sdk", "~> 8.8"
