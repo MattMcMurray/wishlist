@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/unverified" => "email_address_verifications#unverified", as: :unverified
+
   resources :passwords, param: :token
 
   get "/shared/:share_token", to: "shared#shared"
