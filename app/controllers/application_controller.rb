@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_user_email_verified?
+    return true if Current.user.nil?
     return true if @context.nil?
 
     flag = Rails.configuration.client.variation("email-verification", @context, false)
