@@ -98,6 +98,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    childprocess (5.1.0)
+      logger (~> 1.5)
     coderay (1.1.3)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
@@ -187,6 +189,16 @@ GEM
     ld-eventsource (2.2.2)
       concurrent-ruby (~> 1.0)
       http (>= 4.4.1, < 6.0.0)
+    launchy (3.0.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
     link_thumbnailer (3.4.0)
       activesupport (>= 3.0)
       image_info (~> 1.0, >= 1.2.0)
@@ -472,6 +484,7 @@ DEPENDENCIES
   jbuilder
   kamal (>= 2.0.0.rc2)
   launchdarkly-server-sdk (~> 8.8)
+  letter_opener_web
   link_thumbnailer
   propshaft
   pry (~> 0.14.2)
