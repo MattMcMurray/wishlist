@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   # resources :wishlist_items
   resource :session, only: [ :new, :create, :destroy ]
   resource :registration, only: [ :new, :create ]
+
+  resources :email_address_verifications, only: [ :show ], param: :token do
+    collection do
+      post "resend"
+    end
+  end
+
   resources :passwords, param: :token
 
   get "/shared/:share_token", to: "shared#shared"

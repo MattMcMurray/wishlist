@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_04_005413) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_19_153222) do
   create_table "list_shares", id: :string, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "share_type", default: 0
@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_04_005413) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "verified_at"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
