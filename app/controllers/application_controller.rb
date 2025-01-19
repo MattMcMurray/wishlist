@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user_context
+    return if Current.user.nil?
+
     @context = LaunchDarkly::LDContext.create({
       key: Current.user.id.to_s,
       kind: "user",
