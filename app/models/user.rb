@@ -1,5 +1,9 @@
 class User < ApplicationRecord
+  include EmailAddressVerification
+
   has_secure_password
+  has_email_address_verification
+
   has_many :sessions, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :list_shares, dependent: :destroy
