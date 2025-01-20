@@ -77,3 +77,5 @@ gem "pundit", "~> 2.4"
 gem "dockerfile-rails", ">= 1.6", group: :development
 
 gem "launchdarkly-server-sdk", "~> 8.8"
+
+gem "postmark-rails", "~> 0.22.1"

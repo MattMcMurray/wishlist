@@ -264,6 +264,11 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
+    postmark (1.25.1)
+      json
+    postmark-rails (0.22.1)
+      actionmailer (>= 3.0.0)
+      postmark (>= 1.21.3, < 2.0)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -486,6 +491,7 @@ DEPENDENCIES
   launchdarkly-server-sdk (~> 8.8)
   letter_opener_web
   link_thumbnailer
+  postmark-rails (~> 0.22.1)
   propshaft
   pry (~> 0.14.2)
   puma (>= 5.0)
