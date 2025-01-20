@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   before_action :resume_session, only: [ :new ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
+  skip_before_action :redirect_if_user_unverified
+
   def new
     authorize Session
     redirect_to after_authentication_url if authenticated?
