@@ -28,9 +28,17 @@
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
 
-  <body class="h-dvh text-gray-dark dark:text-white dark:bg-gray-dark">
+  <body>
     <%= render "layouts/nav" %>
     <div class="p-2 md:p-0 md:container md:mx-auto md:flex md:flex-col md:h-full">
+      <% if flash[:alert] %>
+        <span class="toast toast--error"><%= flash[:alert] %></span>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <span class="toast toast--success"><%= flash[:notice] %></span>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

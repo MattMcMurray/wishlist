@@ -19,9 +19,9 @@ class ListSharesController < ApplicationController
   end
 
   # GET /list_shares/1/edit
-  def edit
-    authorize @list_share
-  end
+  # def edit
+  #   authorize @list_share
+  # end
 
   # POST /list_shares or /list_shares.json
   def create

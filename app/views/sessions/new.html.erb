@@ -1,8 +1,5 @@
 <h1 class="text-xl mb-2">Sign in</h1>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
 <%= form_with url: session_path, :html => { class: "flex flex-col gap-2"} do |form| %>
   <div class="flex flex-col">
     <%= form.email_field :email_address, class: "rounded", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "text-input" %><br>

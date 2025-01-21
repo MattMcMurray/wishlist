@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :lists do
     resources :wishlist_items
-    resources :list_shares
+    resources :list_shares, except: [ :edit ]
   end
 
   # resources :wishlist_items
