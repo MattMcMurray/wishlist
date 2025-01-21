@@ -28,18 +28,15 @@
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
 
-  <body>
-    <%= render "layouts/nav" %>
-    <div class="p-2 md:p-0 md:container md:mx-auto md:flex md:flex-col md:h-full">
-      <% if flash[:alert] %>
-        <span class="toast toast--error"><%= flash[:alert] %></span>
-      <% end %>
+  <body class="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <% if flash[:alert] %>
+      <span class="toast toast--error"><%= flash[:alert] %></span>
+    <% end %>
 
-      <% if flash[:notice] %>
-        <span class="toast toast--success"><%= flash[:notice] %></span>
-      <% end %>
+    <% if flash[:notice] %>
+      <span class="toast toast--success"><%= flash[:notice] %></span>
+    <% end %>
 
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

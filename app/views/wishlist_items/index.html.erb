@@ -1,31 +1,24 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-500-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<% content_for :header_actions do %>
+  <%= link_to list_list_shares_path, 
+    class: "inline-flex items-center px-4 py-2 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-colors" do %>
+    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                           d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+    </svg>
+    Share
   <% end %>
+<% end %>
 
-  <% content_for :title, "Wishlist" %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl mb-4">
-      <%= @list.title %>
-    </h1>
-  </div>
-
-  <div class="flex justify-between items-center">
-    <%= turbo_frame_tag id="new_list_wishlist_item", src:new_list_wishlist_item_path(list: @list.id), class: "w-full" %>
-  </div>
-
-  <div class="min-w-full">
-    <div id="wishlist_items" class="flex flex-col gap-2">
+<%= render "shared/nav", title: @list.title %>
+<main class="max-w-7xl mx-auto px-4 py-8">
+  <div class="space-y-4">
+    <div class="flex justify-between items-center">
+      <%= turbo_frame_tag id="new_list_wishlist_item", src:new_list_wishlist_item_path(list: @list.id), class: "w-full" %>
+    </div>
+    <div id="wishlist_items">
       <% @wishlist_items.each do |wishlist_item| %>
         <%= render wishlist_item %>
       <% end %>
     </div>
   </div>
-
-  <div class="py-8 flex flex-col md:flex-row gap-2">
-    <%= link_to "Share list", list_list_shares_path, class: "button-primary" %>
-    <%= link_to "Edit list details", edit_list_path(@list), class: "button-default" %>
-    <%= button_to "Delete list", @list, method: :delete, form: {data: {turbo_confirm: 'Delete this wishlist permanently? This cannot be undone.'}}, class: "button-danger button--full-width"  %>
-  </div>
-</div>
+</main>
