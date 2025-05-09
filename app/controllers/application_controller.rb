@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_pundit_authorization
 
   before_action :set_user_context
+  before_action :redirect_if_user_unverified
 
   def verify_pundit_authorization
     return true if ENV["SKIP_PUNDIT_VERIFICATION"]
@@ -25,6 +26,16 @@ class ApplicationController < ActionController::Base
       name: Current.user.email_address,
       groups: []
     })
+  end
+
+  def redirect_if_user_unverified
+    return if Current.user.nil?
+    return if @context.nil?
+
+    flag = Rails.configuration.client.variation("email-verification", @context, false)
+    return if !flag
+
+    redirect_to "/unverified" if Current.user.verified_at.nil?
   end
 
   # TODO: uncomment

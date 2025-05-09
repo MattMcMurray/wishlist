@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   # resources :wishlist_items
   resource :session, only: [ :new, :create, :destroy ]
   resource :registration, only: [ :new, :create ]
+
+  resources :email_address_verifications, only: [ :show ], param: :token do
+    collection do
+      post "resend"
+    end
+  end
+
+  get "/unverified" => "email_address_verifications#unverified", as: :unverified
+
   resources :passwords, param: :token
 
   get "/shared/:share_token", to: "shared#shared"
@@ -23,4 +32,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "homepage#index"
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

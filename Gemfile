@@ -61,6 +61,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener_web"
 end
 
 group :test do
@@ -76,3 +77,5 @@ gem "pundit", "~> 2.4"
 gem "dockerfile-rails", ">= 1.6", group: :development
 
 gem "launchdarkly-server-sdk", "~> 8.8"
+
+gem "postmark-rails", "~> 0.22.1"

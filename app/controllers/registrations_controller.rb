@@ -32,6 +32,7 @@ class RegistrationsController < ApplicationController
 
     if user.save
       start_new_session_for user
+      UserMailer.verify_email_address(user).deliver_later
       redirect_to after_authentication_url, notice: "Account created"
     else
       redirect_to new_registration_url, alert: user.errors.full_messages.to_sentence
